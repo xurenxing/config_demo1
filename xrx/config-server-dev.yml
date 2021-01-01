@@ -1,0 +1,7 @@
+rabbitmq:
+  virtual-host: /rights-market
+  addresses: 127.0.0.1:5672
+  username: devops
+  password: Devops123!@#
+encrypt:
+  key: sfsvpajugg
