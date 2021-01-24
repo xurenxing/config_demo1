@@ -1,0 +1,23 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: microservice-movie
+eureka:
+  client:
+    register-with-eureka: true  #作为客户端需要注册到eureka
+    fetch-registry: true        #作为客户端需要从eureka获取注册信息
+    service-url:
+      defaultZone: http://127.0.0.1:8888/eureka
+#      defaultZone: http://127.0.0.1:8888/eureka,http://127.0.0.1:9999/eureka
+    # 修改调用方获取注册信息的间隔时间
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true #优先使用本服务的ip地址注册到eureka，而不是域名，生产环境中，建议改成true
+# 修改ribbon的负载均衡算法(只要实现IRule接口，再注册到这里，就能使用自己的负载均衡算法)
+microservice-user:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+feign:
+  hystrix:
+    enabled: true  # feign熔断器的开启
