@@ -21,3 +21,5 @@ microservice-user:
 feign:
   hystrix:
     enabled: true  # feign熔断器的开启
+test:
+  config: xxxx111
